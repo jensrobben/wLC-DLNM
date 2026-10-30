@@ -4,7 +4,7 @@ This repository contains the R code for the paper
 
 > **A penalized distributed lag non-linear Lee–Carter framework for regional weekly mortality forecasting**
 > Jens Robben and Karim Barigou
-> [arXiv:2509.24087](https://arxiv.org/abs/2509.24087) · [PDF](https://arxiv.org/pdf/2509.24087) · [Online Appendix](https://jensrobben.github.io/articles/wLC-DLNM/Online%20Appendix.pdf)
+> [arXiv:2509.24087](https://arxiv.org/abs/2509.24087) · [PDF](https://arxiv.org/pdf/2509.24087) · [Online Appendix](https://jensrobben.github.io/articles/wLC-DLNM/Online_Appendix.pdf)
 
 The framework forecasts **weekly, regional, age-specific mortality**. It separates the usual seasonal pattern from short-term excess deaths caused by **heat, cold and influenza**.
 
