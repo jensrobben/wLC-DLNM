@@ -4,6 +4,7 @@ This repository contains the R code for the paper
 
 > **A penalized distributed lag non-linear Lee–Carter framework for regional weekly mortality forecasting**
 > Jens Robben and Karim Barigou
+> [arXiv:2509.24087](https://arxiv.org/abs/2509.24087) · [PDF](https://arxiv.org/pdf/2509.24087) · [Online Appendix](https://jensrobben.github.io/articles/wLC-DLNM/Online%20Appendix.pdf)
 
 The framework forecasts **weekly, regional, age-specific mortality**. It separates the usual seasonal pattern from short-term excess deaths caused by **heat, cold and influenza**.
 
@@ -11,19 +12,19 @@ The framework forecasts **weekly, regional, age-specific mortality**. It separat
 
 ## What the model does
 
-The model extends the Lee–Carter model to weekly data for several regions. The log force of mortality for age group $x$, year $t$, week $w$ and region $r$ is:
+The model extends the Lee–Carter model to weekly data for several regions. The log force of mortality for age group $`x`$, year $`t`$, week $`w`$ and region $`r`$ is:
 
-$$
+```math
 \log \mu_{x,t,w,r} =
-\underbrace{\alpha_{x,r} + \beta_x \kappa_{t,r} + \gamma_x \lambda_{w,r}}_{\text{seasonal baseline}}
-+ \underbrace{\delta_x f^{(1)}_r(\text{Tavg}_{t,w,r}) + \epsilon_x f^{(2)}_r(\text{ILI}_{t,w,r})}_{\text{temperature and influenza effects}}
-$$
+\underbrace{\alpha_{x,r} + \beta_x \kappa_{t,r} + \gamma_x \lambda_{w,r}}_{\text{seasonal baseline}} +
+\underbrace{\delta_x f^{(1)}_r(\text{Tavg}_{t,w,r}) + \epsilon_x f^{(2)}_r(\text{ILI}_{t,w,r})}_{\text{temperature and influenza effects}}
+```
 
 Death counts follow a negative binomial distribution, which allows for overdispersion.
 
 Main features:
 
-- **Seasonal baseline.** A yearly mortality index $\kappa_{t,r}$ and a separate week-of-year effect $\lambda_{w,r}$, each with its own age sensitivity.
+- **Seasonal baseline.** A yearly mortality index $`\kappa_{t,r}`$ and a separate week-of-year effect $`\lambda_{w,r}`$, each with its own age sensitivity.
 - **Distributed lag non-linear models (DLNMs).** These capture the delayed, non-linear effects of weekly average temperature and influenza-like illness (ILI) incidence. The cross-bases are centred on their week-of-year means, so the DLNM terms describe departures from typical conditions only.
 - **Spatial smoothing.** A Laplacian penalty pulls the temperature and influenza effects of neighbouring regions towards each other. The smoothing parameters are chosen by an effective-degrees-of-freedom BIC.
 - **Forecasting.** SARIMA models for the mortality index, temperature and ILI. Dependence between regions is captured with Gaussian or t-copulas fitted on shrunk correlation matrices.
@@ -151,20 +152,23 @@ install.packages(c(
 
 ---
 
-## Supplementary material
+## Paper and supplementary material
 
-The Online Appendix, with results for all regions and age groups, is available [here](https://jensrobben.github.io/articles/wLC-DLNM/Online%20Appendix.pdf).
+- **Paper:** [arXiv:2509.24087](https://arxiv.org/abs/2509.24087). The Supplementary Material (sensitivity analyses, model comparisons and benchmark specifications, referred to as "Suppl. Mat." in the scripts above) is at the end of the paper PDF.
+- **Online Appendix:** [Online Appendix.pdf](https://jensrobben.github.io/articles/wLC-DLNM/Online%20Appendix.pdf), with the in-sample fits, relative risk curves and relative risk surfaces for all regions and age groups.
 
 ## Citation
 
 If you use this code, please cite the paper:
 
 ```bibtex
-@unpublished{robben_barigou_wlcdlnm,
-  author = {Robben, Jens and Barigou, Karim},
-  title  = {A penalized distributed lag non-linear {Lee--Carter} framework for regional weekly mortality forecasting},
-  note   = {Working paper},
-  year   = {2026}
+@misc{robben_barigou_2025_wlcdlnm,
+  author        = {Robben, Jens and Barigou, Karim},
+  title         = {A penalized distributed lag non-linear {Lee--Carter} framework for regional weekly mortality forecasting},
+  year          = {2025},
+  eprint        = {2509.24087},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2509.24087}
 }
 ```
 
